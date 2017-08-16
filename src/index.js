@@ -2,13 +2,13 @@ import { GraphQLScalarType } from 'graphql';
 import { Kind } from 'graphql/language';
 
 function identity(value) {
-  return JSON.stringify(value);
+  return value;
 }
 
 function parseLiteral(ast) {
   switch (ast.kind) {
     case Kind.STRING:
-      return JSON.parse(ast);
+      return JSON.parse(ast.value);
     default:
       return null;
   }
